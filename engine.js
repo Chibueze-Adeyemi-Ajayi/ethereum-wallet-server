@@ -1,26 +1,12 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const helmet = require('helmet');
-const {MarketPriceMiddleWare} = require('./modules/middlewares');
+const { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware } = require('./modules/middlewares');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// market cap module
-(async function () {
-    //let ethereum_price = await getEthereumPrice();
-    //console.log(ethereum_price);
-})();
-
-// creating ethereum wallet
-(async function () {
-    // const wallet = await createEthereumWallet();
-    // console.log(wallet);
-})();
-
-// importing ethereum wallet
-(async function () {
-    // const wallet = await importWallet("0xac9dc75cff8d5e17d4ba3f3b6ec3eeb27c0d5b5e2aad40eb0a3418e937a92f6a");
-    // console.log(wallet);
-})();
+app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //sending ethereum
 (async function () {
@@ -32,9 +18,19 @@ app.get('/', (req, res, next) => {
     res.end()
 });
 
-app.post('/wallet/create', MarketPriceMiddleWare, (req, res, next) => {
+app.post('/marketprice', MarketPriceMiddleWare, (req, res) => {
+    res.json(req.result);
+});
 
-})
+app.post('/wallet/create', CreateWalletMiddleware, (req, res) => {
+    res.json(req.result);
+});
+
+app.post('/wallet/import', ImportWalletMiddleware, (req, res) => {
+    res.json(req.result);
+});
+
+//
 
 app.listen(port, (err) => {
     if (err) throw err;
