@@ -1,0 +1,9 @@
+1. check latest price of ethereum to 
+    . Dollar
+    . BNB
+    . BTC
+    . XRP
+2. create ethereum wallet
+3. import ethereum wallet
+4. view wallet details and balance
+5. send ethereum
