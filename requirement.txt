@@ -7,3 +7,12 @@
 3. import ethereum wallet
 4. view wallet details and balance
 5. send ethereum
+
+TEST Wallet 
+  address: '0x4C9cf493b01450D2Ce837Ba49D0c8D55C3182330',
+  private_key: '0x70c211648f2840c73b02bf52a3c2cfff49a89a6bd07f04c525e72a5c77b0e3d3',
+  public_key: '0x040dc8bf6d69af0d22cd356f5d000ffd7071261af5e4546aa76c96710635cb0a826d39b1fe2d5d8736814549b83d86758a80271f5bb1ceae86701d1d4efcbedee6',
+MAIN Wallet
+  address: '0x2A63E7b9F9d9674477c1F9AA78E0aBC5b6482cD7',
+  private_key: '0xac9dc75cff8d5e17d4ba3f3b6ec3eeb27c0d5b5e2aad40eb0a3418e937a92f6a',
+  public_key: '0x04137d39053cb2527b31fcb76a54cea327feddb204707bcceec9521d4cd25d68803e8cdb53c28c3e98a7ee8e329abbb0f6269fb5832e321cb806225b2bf4faeb38',
