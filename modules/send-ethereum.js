@@ -35,6 +35,13 @@ const transactEther = async (from, to, amount, private_key) => {
         if (log.length == 0) {
             console.log(`You just sent ` + amount + `ETH to ` + to);
             code = 200;
+            return {
+                code: 200,
+                status: "Transaction complete",
+                message: "Transaction completed",
+                result: result
+            }
+    
         }
 
         console.log(`Unable to instantiate transaction`);
@@ -48,7 +55,14 @@ const transactEther = async (from, to, amount, private_key) => {
             result: result
         }
 
-    } catch (exp) {alert("Transaction failed");}
+    } catch (exp) {
+        return {
+            code: 400,
+            status: "Transaction failed",
+            message: "Transaction failed",
+            result: []
+        }
+    }
 
 }
 

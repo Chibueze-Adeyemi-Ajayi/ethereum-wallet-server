@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const helmet = require('helmet');
-const { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware } = require('./modules/middlewares');
+const { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware, TransferEtherMiddleware } = require('./modules/middlewares');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 })();
 
 app.get('/', (req, res, next) => {
-    res.send("Ether Wallet Server, Hurray!!!!!");
+    res.send("Latest Commit!!! Ethereum Wallet server running");
     res.end()
 });
 
@@ -30,7 +30,9 @@ app.post('/wallet/import', ImportWalletMiddleware, (req, res) => {
     res.json(req.result);
 });
 
-//
+app.post('/transfer', TransferEtherMiddleware, (req, res) => {
+    res.json(req.result);
+});
 
 app.listen(port, (err) => {
     if (err) throw err;

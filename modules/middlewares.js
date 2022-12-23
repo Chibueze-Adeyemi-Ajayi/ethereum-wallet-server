@@ -23,11 +23,13 @@ const ImportWalletMiddleware = async (req, res, next) => {
     } catch (err) { req.result = err; next(); }
 }
 
-const TransferEther = async (req, res, next) => {
+const TransferEtherMiddleware = async (req, res, next) => {
     try {
-        const result = transactEther();
-        next();
+        let from = req.body.from, to = req.body.to;
+        let amount = req.body.amount, private_key = req.body.private_key;
+        const result = await transactEther(from, to, amount, private_key);
+        req.result = result; next();
     } catch (err) { req.result = err; next(); }
 }
 
-module.exports = { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware };
+module.exports = { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware, TransferEtherMiddleware };
