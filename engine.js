@@ -4,9 +4,13 @@ const helmet = require('helmet');
 const { MarketPriceMiddleWare, CreateWalletMiddleware, ImportWalletMiddleware, TransferEtherMiddleware } = require('./modules/middlewares');
 const app = express();
 const port = process.env.PORT || 5000;
+const cors = require('cors');
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({
+    origin: '*'
+}));
 
 //sending ethereum
 (async function () {
